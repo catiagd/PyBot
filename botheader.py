@@ -20,7 +20,8 @@ smile=[":D",":P",":)",";)",":*"]
 
 class buttons:
     btnmenu = [
-        Template.ButtonPostBack("Serviços", "SERV_PAYLOAD"),
+        Template.ButtonPostBack("Serviços", "MUSIC_PAYLOAD"),
+        Template.ButtonPostBack('"Produtos recreativos"',"PROD_PAYLOAD"),
         Template.ButtonPostBack("Ajuda","AJUDA_PAYLOAD")
     ]
 
@@ -153,12 +154,12 @@ def received_postback(event):
     print("Postback de {} recebido. Payload de :{}".format(sender_id,payload)) #LOG
     if payload == "START_PAYLOAD": #Se o get started ter sido pressionado
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
-    elif payload == "SERV_PAYLOAD": #Se o butao de musica ser pressionado
-        page.send(sender_id, "temos uma variada gama de serviços de impermeabilização, para um esclarecimento mais aprofundado ligue 966004742")
-        #page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
+    elif payload == "MUSIC_PAYLOAD": #Se o butao de musica ser pressionado
+        page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
     elif payload == "AJUDA_PAYLOAD": #Se for de ajuda
         page.send(sender_id,"Pode-me dizer, a qualquer altura 'menu' e eu irei te mostrar o menu! :D")
-  
+    elif payload == "PROD_PAYLOAD": #Se for de "Produtos recreativos"
+        page.send(sender_id,"Temos uma variada range de produtos.\nCarregue no menu ao seu lado esquerdo, para ir ao nosso website")
 
 @page.handle_delivery #Para verificar que a msg e enviada com sucesso
 def received_delivery_confirmation(event):
@@ -170,4 +171,4 @@ def received_delivery_confirmation(event):
 
 @page.handle_read #Para verificar se o user le a msg
 def received_message_read(event):
-    print("O user leu a mensagem")
+print("O user leu a mensagem")
