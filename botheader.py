@@ -25,15 +25,17 @@ class buttons:
     ]
 
 class quickReply:
+'''    
         quick_musica = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                         {'title': "Rn'B", 'payload': 'PICK_RnB'},
                         {'title': 'Pop', 'payload': 'PICK_POP'},
                         {'title': 'Indie', 'payload': 'PICK_INDIE'},
                         {'title': 'Classic', 'payload': 'PICK_CLASSIC'},
                         {'title': 'Metal', 'payload': 'PICK_METAL'}]
+'''        
         default_menu = [{'title': 'Menu','payload': 'PICK_MENU'},
-                        {'title': 'Preços','payload': 'PICK_PRECO'},
-                        {'title': 'Música do dia','payload':'PICK_MUS'}]
+                        {'title': 'Preços','payload': 'PICK_PRECO'}]
+'''
         def get_music(genre):
             if genre == "PICK_ROCK":
                 playlist = ["https://www.youtube.com/watch?v=YR5ApYxkU-U&list=RDYR5ApYxkU-U&t=1","https://www.youtube.com/watch?v=fJ9rUzIMcZQ&list=RDEMbHaAxpOZhcVmmF6I3y0siA","https://www.youtube.com/watch?v=s88r_q7oufE&list=RDEMu-D7kEFynn1tn5qmluVnhw","https://www.youtube.com/watch?v=v2AC41dglnM&list=RDEMDs8vWIQKMflBG8QUQQaUrw"]
@@ -48,7 +50,7 @@ class quickReply:
             elif genre == "PICK_CLASSIC":
                 playlist = ["https://www.youtube.com/watch?v=O6NRLYUThrY","https://www.youtube.com/watch?v=W-fFHeTX70Q","https://www.youtube.com/watch?v=6JQm5aSjX6g",""]
             return random.choice(playlist)
-
+'''
 class Handle:
     def get_num(): #Obtem um numero random entre 1 e 2
         numbergen=[1,2]
@@ -110,8 +112,8 @@ def message_handler(event): #Trabalha as msg
     elif message.get("quick_reply"): #Se for um quick_reply
         if "PICK_MENU" in str(message.get("quick_reply")): #Se tiver escolhido o menu
             page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
-        elif "PICK_MUS" in str(message.get("quick_reply")): #Se tiver escolhido o menu de musica
-            page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
+        #elif "PICK_MUS" in str(message.get("quick_reply")): #Se tiver escolhido o menu de musica
+            #page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
         elif "PICK_PRECO" in str(message.get("quick_reply")): #Se tiver escolhido o Preço
             page.send(sender_id,"Deste momento não disponibilizamos preços. Obrigado.")
         else: #Se for de um genero musical
