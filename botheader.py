@@ -9,7 +9,7 @@ from flask import Flask, request
 token = "EAAXucKw0xEwBAGMKSa2ZBHy6kW2rCDJVz9ZBKioho7EiDOPNFJs3IvKcBrVWesDnYzZCfL4uytPnY2HYTTWdbPvPvIaT97RvTcuhRAJSZB2GJLV5RsZCfzLbeTkNSmWLgJhWyNNjgQkQxh0rciNhWo4Skv29CQjLZAZCeq5rysgyAZDZD"
 page = Page(token)
 QuestaoPaga=["quais sao as opcoes de pagamento?","como posso pagar?","pagar"]
-QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?", "quanto é que os teus serviços custam?"]
+QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?", "quanto é que os teus serviços custam?, orçamento"]
 saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
 vidal = ["qual o segredo da vida?","qual o proposito de viver","existe um suprasumo da sapiencia"]
 nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
@@ -126,7 +126,9 @@ def message_handler(event): #Trabalha as msg
         if message.upper() in smile:
             page.send(sender_id,Handle.get_message('smile'))
         elif message in QuestaoPreco:
-            page.send(sender_id,"peça o seu orçamento liagando para o numero 966004742")
+            page.send(sender_id,"Escreva a palavra -orçamento- ou peça o seu orçamento liagando para o numero 966004742")
+            for x in moderator: #manda para os donos a dizer que houve porcaria
+##                page.send(x,"O user {} perguntou por preço. :)".format(nomeuser))
         elif message in saudacoes:
             page.send(sender_id,"Saudações")
         elif message in nome:
