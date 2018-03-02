@@ -128,7 +128,7 @@ def message_handler(event): #Trabalha as msg
         elif message in QuestaoPreco:
             page.send(sender_id,"Escreva a palavra -orçamento- ou peça o seu orçamento liagando para o numero 966004742")
             for x in moderator: #manda para os donos a dizer que houve porcaria
-##                page.send(x,"O user {} perguntou por preço. :)".format(nomeuser))
+                page.send(x,"O user {} perguntou por preço. :)".format(nomeuser))
         elif message in saudacoes:
             page.send(sender_id,"Saudações")
         elif message in nome:
