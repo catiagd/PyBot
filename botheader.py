@@ -23,7 +23,7 @@ class buttons:
         Template.ButtonPostBack("Serviços", "SERV_PAYLOAD"),
         Template.ButtonPostBack("Ajuda","AJUDA_PAYLOAD")
     ]
-
+'''
 class quickReply:
         quick_musica = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                         {'title': "Rn'B", 'payload': 'PICK_RnB'},
@@ -48,7 +48,7 @@ class quickReply:
             elif genre == "PICK_CLASSIC":
                 playlist = ["https://www.youtube.com/watch?v=O6NRLYUThrY","https://www.youtube.com/watch?v=W-fFHeTX70Q","https://www.youtube.com/watch?v=6JQm5aSjX6g",""]
             return random.choice(playlist)
-
+'''
 class Handle:
     def get_num(): #Obtem um numero random entre 1 e 2
         numbergen=[1,2]
@@ -63,15 +63,15 @@ class Handle:
 
     def get_message(tipo): #Obtem uma msg random para enviar
         if tipo == 'image':
-            exemplos= ["Lindo/a","Que giro","Wow"]
+            exemplos= ["Que giro","Wow"]
         elif tipo == 'video':
             exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
         elif tipo == 'audio':
-            exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
+            exemplos=["os meus donos ja ouvirão", "say whaaaaa!"]
         elif tipo == 'smile':
             return random.choice(smile)
         elif tipo  == 'text':
-            exemplos = ["Peço imensa desculpa, não pense que sou um bot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
+            exemplos = ["Peço imensa desculpa, não pense que sou um robot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
         return (random.choice(exemplos)+' -signed bot')
 
 @page.handle_message
@@ -124,17 +124,13 @@ def message_handler(event): #Trabalha as msg
         if message.upper() in smile:
             page.send(sender_id,Handle.get_message('smile'))
         elif message in QuestaoPreco:
-            page.send(sender_id,"o range é de 10 a 100 euros")
+            page.send(sender_id,"peça o seu orçamento liagando para o numero 966004742")
         elif message in saudacoes:
             page.send(sender_id,"Saudações")
-        elif message in vidal:
-            page.send(sender_id, "a resposta é sempre DARIO\n https://www.youtube.com/watch?v=vTIIMJ9tUc8")
         elif message in nome:
             page.send(sender_id, "eu sou o Bot, um robot simpático")
-        elif message == ('gostas de pigoitinhas?'):
-            page.send(sender_id, "eu sim, o marco só deles duros")
         elif message in perg_area:
-            page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
+            page.send(sender_id, "estamos na area da impermeabilização")
         elif message in perg_servc:
            page.send(sender_id, "questões mais especificas serão remetidas para os administradores da págida e respondidas com a maior brevidade possivel")
         elif message == "menu":
