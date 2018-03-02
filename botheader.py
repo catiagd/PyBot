@@ -25,32 +25,32 @@ class buttons:
     ]
 
 class quickReply:
-'''    
-        quick_musica = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
-                        {'title': "Rn'B", 'payload': 'PICK_RnB'},
-                        {'title': 'Pop', 'payload': 'PICK_POP'},
-                        {'title': 'Indie', 'payload': 'PICK_INDIE'},
-                        {'title': 'Classic', 'payload': 'PICK_CLASSIC'},
-                        {'title': 'Metal', 'payload': 'PICK_METAL'}]
-'''        
+    
+#        quick_musica = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
+#                        {'title': "Rn'B", 'payload': 'PICK_RnB'},
+#                        {'title': 'Pop', 'payload': 'PICK_POP'},
+#                        {'title': 'Indie', 'payload': 'PICK_INDIE'},
+#                        {'title': 'Classic', 'payload': 'PICK_CLASSIC'},
+#                        {'title': 'Metal', 'payload': 'PICK_METAL'}]
+        
         default_menu = [{'title': 'Menu','payload': 'PICK_MENU'},
                         {'title': 'Preços','payload': 'PICK_PRECO'}]
-'''
-        def get_music(genre):
-            if genre == "PICK_ROCK":
-                playlist = ["https://www.youtube.com/watch?v=YR5ApYxkU-U&list=RDYR5ApYxkU-U&t=1","https://www.youtube.com/watch?v=fJ9rUzIMcZQ&list=RDEMbHaAxpOZhcVmmF6I3y0siA","https://www.youtube.com/watch?v=s88r_q7oufE&list=RDEMu-D7kEFynn1tn5qmluVnhw","https://www.youtube.com/watch?v=v2AC41dglnM&list=RDEMDs8vWIQKMflBG8QUQQaUrw"]
-            elif genre == "PICK_INDIE":
-                playlist = ["https://www.youtube.com/watch?v=VEpMj-tqixs&list=RDQMLJaf3zcef1I","https://www.youtube.com/watch?v=A-Tod1_tZdU&list=RDEMhK9GwO7FT3oWyTWGsPuSrg","https://www.youtube.com/watch?v=_DjE4gbIVZk&list=RD_DjE4gbIVZk&t=2","https://www.youtube.com/watch?v=bpOSxM0rNPM&list=RDEMThYJ2VcXXNp3GM7AwT24UQ","https://www.youtube.com/watch?v=_lMlsPQJs6U&list=RD_lMlsPQJs6U&t=2"]
-            elif genre == "PICK_POP":
-                playlist = ["https://www.youtube.com/watch?v=Zi_XLOBDo_Y&list=RDEMe12_MlgO8mGFdeeftZ2nOQ","https://www.youtube.com/watch?v=EDwb9jOVRtU&list=RDEMaN9C20MoM3K8E1iVi3CAmg","https://www.youtube.com/watch?v=v0KpfrJE4zw&list=RDEM_0ItSElzQ0VS4lssmoXyeg"]
-            elif genre == "PICK_RnB":
-                playlist = ["https://www.youtube.com/watch?v=rywUS-ohqeE&list=RDEMWzjnvwhEBiIfo26pzdGUgw","https://www.youtube.com/watch?v=0CFuCYNx-1g&list=RD0CFuCYNx-1g"]
-            elif genre == "PICK_METAL":
-                playlist = ["https://www.youtube.com/watch?v=CD-E-LDc384&list=RDEMAkKpoB62G5Wmtp0nQxfrDg","https://www.youtube.com/watch?v=F_6IjeprfEs&list=RDF_6IjeprfEs&t=1","https://www.youtube.com/watch?v=KF96MQbDkMQ&list=RDKF96MQbDkMQ","https://www.youtube.com/watch?v=Ff54AQaDGbs&list=RDFf54AQaDGbs&t=1","https://www.youtube.com/watch?v=CSvFpBOe8eY&list=RDEMRoCx7NEN4B1lXoHSAiz26w"]
-            elif genre == "PICK_CLASSIC":
-                playlist = ["https://www.youtube.com/watch?v=O6NRLYUThrY","https://www.youtube.com/watch?v=W-fFHeTX70Q","https://www.youtube.com/watch?v=6JQm5aSjX6g",""]
-            return random.choice(playlist)
-'''
+
+#        def get_music(genre):
+#            if genre == "PICK_ROCK":
+#                playlist = ["https://www.youtube.com/watch?v=YR5ApYxkU-U&list=RDYR5ApYxkU-U&t=1","https://www.youtube.com/watch?v=fJ9rUzIMcZQ&list=RDEMbHaAxpOZhcVmmF6I3y0siA","https://www.youtube.com/watch?v=s88r_q7oufE&list=RDEMu-D7kEFynn1tn5qmluVnhw","https://www.youtube.com/watch?v=v2AC41dglnM&list=RDEMDs8vWIQKMflBG8QUQQaUrw"]
+#            elif genre == "PICK_INDIE":
+#                playlist = ["https://www.youtube.com/watch?v=VEpMj-tqixs&list=RDQMLJaf3zcef1I","https://www.youtube.com/watch?v=A-Tod1_tZdU&list=RDEMhK9GwO7FT3oWyTWGsPuSrg","https://www.youtube.com/watch?v=_DjE4gbIVZk&list=RD_DjE4gbIVZk&t=2","https://www.youtube.com/watch?v=bpOSxM0rNPM&list=RDEMThYJ2VcXXNp3GM7AwT24UQ","https://www.youtube.com/watch?v=_lMlsPQJs6U&list=RD_lMlsPQJs6U&t=2"]
+#            elif genre == "PICK_POP":
+#                playlist = ["https://www.youtube.com/watch?v=Zi_XLOBDo_Y&list=RDEMe12_MlgO8mGFdeeftZ2nOQ","https://www.youtube.com/watch?v=EDwb9jOVRtU&list=RDEMaN9C20MoM3K8E1iVi3CAmg","https://www.youtube.com/watch?v=v0KpfrJE4zw&list=RDEM_0ItSElzQ0VS4lssmoXyeg"]
+#            elif genre == "PICK_RnB":
+#                playlist = ["https://www.youtube.com/watch?v=rywUS-ohqeE&list=RDEMWzjnvwhEBiIfo26pzdGUgw","https://www.youtube.com/watch?v=0CFuCYNx-1g&list=RD0CFuCYNx-1g"]
+#            elif genre == "PICK_METAL":
+#                playlist = ["https://www.youtube.com/watch?v=CD-E-LDc384&list=RDEMAkKpoB62G5Wmtp0nQxfrDg","https://www.youtube.com/watch?v=F_6IjeprfEs&list=RDF_6IjeprfEs&t=1","https://www.youtube.com/watch?v=KF96MQbDkMQ&list=RDKF96MQbDkMQ","https://www.youtube.com/watch?v=Ff54AQaDGbs&list=RDFf54AQaDGbs&t=1","https://www.youtube.com/watch?v=CSvFpBOe8eY&list=RDEMRoCx7NEN4B1lXoHSAiz26w"]
+#            elif genre == "PICK_CLASSIC":
+#                playlist = ["https://www.youtube.com/watch?v=O6NRLYUThrY","https://www.youtube.com/watch?v=W-fFHeTX70Q","https://www.youtube.com/watch?v=6JQm5aSjX6g",""]
+#            return random.choice(playlist)
+
 class Handle:
     def get_num(): #Obtem um numero random entre 1 e 2
         numbergen=[1,2]
