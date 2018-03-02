@@ -115,7 +115,9 @@ def message_handler(event): #Trabalha as msg
         #elif "PICK_MUS" in str(message.get("quick_reply")): #Se tiver escolhido o menu de musica
             #page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
         elif "PICK_PRECO" in str(message.get("quick_reply")): #Se tiver escolhido o Preço
-            page.send(sender_id,"Deste momento não disponibilizamos preços. Obrigado.")
+            page.send(sender_id,"Poderá pedir um orçamento à sua medida ligando 966004742. Obrigado.")
+            for x in moderator: #manda para os donos a dizer que houve porcaria
+                page.send(x,"O user {} perguntou por preço. :)".format(nomeuser))
         else: #Se for de um genero musical
             video_url=quickReply.get_music((message.get("quick_reply")).get('payload'))
             page.send(sender_id,video_url)
@@ -127,8 +129,6 @@ def message_handler(event): #Trabalha as msg
             page.send(sender_id,Handle.get_message('smile'))
         elif message in QuestaoPreco:
             page.send(sender_id,"Escreva a palavra -orçamento- ou peça o seu orçamento liagando para o numero 966004742")
-            for x in moderator: #manda para os donos a dizer que houve porcaria
-                page.send(x,"O user {} perguntou por preço. :)".format(nomeuser))
         elif message in saudacoes:
             page.send(sender_id,"Saudações")
         elif message in nome:
