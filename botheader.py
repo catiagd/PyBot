@@ -20,11 +20,11 @@ smile=[":D",":P",":)",";)",":*"]
 
 class buttons:
     btnmenu = [
-        Template.ButtonPostBack("Musica", "MUSIC_PAYLOAD"),
-        Template.ButtonPostBack('"Produtos recreativos"',"PROD_PAYLOAD"),
+        Template.ButtonPostBack("Serviços", "MUSIC_PAYLOAD"),
+        Template.ButtonPostBack("Produtos","PROD_PAYLOAD"),
         Template.ButtonPostBack("Ajuda","AJUDA_PAYLOAD")
     ]
-
+'''
 class quickReply:
         quick_musica = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
                         {'title': "Rn'B", 'payload': 'PICK_RnB'},
@@ -49,8 +49,9 @@ class quickReply:
             elif genre == "PICK_CLASSIC":
                 playlist = ["https://www.youtube.com/watch?v=O6NRLYUThrY","https://www.youtube.com/watch?v=W-fFHeTX70Q","https://www.youtube.com/watch?v=6JQm5aSjX6g",""]
             return random.choice(playlist)
-
+'''
 class Handle:
+'''
     def get_num(): #Obtem um numero random entre 1 e 2
         numbergen=[1,2]
         return random.choice(numbergen)
@@ -61,8 +62,10 @@ class Handle:
         if tipo == 'thumbs':
             exemplos =["http://static.twentytwowords.com/wp-content/uploads/Thumbs-and-Ammo-02.jpg","http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"]
         return random.choice(exemplos)
+'''
 
     def get_message(tipo): #Obtem uma msg random para enviar
+        '''
         if tipo == 'image':
             exemplos= ["Lindo/a","Que giro","Wow"]
         elif tipo == 'video':
@@ -71,9 +74,10 @@ class Handle:
             exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
         elif tipo == 'smile':
             return random.choice(smile)
-        elif tipo  == 'text':
-            exemplos = ["Peço imensa desculpa, não pense que sou um bot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
-        return (random.choice(exemplos)+' -signed bot')
+        '''        
+        if tipo  == 'text':
+            exemplos = ["Peço imensa desculpa, não pense que sou um robot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
+        return (random.choice(exemplos)+' -signed robot')
 
 @page.handle_message
 def message_handler(event): #Trabalha as msg
@@ -91,6 +95,7 @@ def message_handler(event): #Trabalha as msg
             if '369239263222822' in str(message.get("attachments")): #Se e o fixezinho
                 image_url=Handle.get_att('thumbs')
                 page.send(sender_id,Attachment.Image(image_url))
+            '''
             else: #Imagem normal
                 if Handle.get_num() == 1: #Envia txt
                     msg=Handle.get_message('image')
@@ -106,8 +111,10 @@ def message_handler(event): #Trabalha as msg
             page.send(sender_id,msg)
         elif 'file' in str(message.get("attachments")): #Se for file
             page.send(sender_id,"Files são dubios")
+            '''
         else: #Fault tolerance
             page.send(sender_id,"Já o vou ver! :D")
+    '''
     elif message.get("quick_reply"): #Se for um quick_reply
         if "PICK_MENU" in str(message.get("quick_reply")): #Se tiver escolhido o menu
             page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
@@ -118,6 +125,7 @@ def message_handler(event): #Trabalha as msg
         else: #Se for de um genero musical
             video_url=quickReply.get_music((message.get("quick_reply")).get('payload'))
             page.send(sender_id,video_url)
+    '''
     elif message.get("text"): #Se for texto
         message = event.message_text #Guarda o texto
         print(message)
@@ -125,17 +133,13 @@ def message_handler(event): #Trabalha as msg
         if message.upper() in smile:
             page.send(sender_id,Handle.get_message('smile'))
         elif message in QuestaoPreco:
-            page.send(sender_id,"o range é de 10 a 100 euros")
+            page.send(sender_id,"os preços podem variar, será feito um orçamento à sua medida, contactar 966004742")
         elif message in saudacoes:
             page.send(sender_id,"Saudações")
-        elif message in vidal:
-            page.send(sender_id, "a resposta é sempre DARIO\n https://www.youtube.com/watch?v=vTIIMJ9tUc8")
         elif message in nome:
-            page.send(sender_id, "eu sou o Bot, um robot simpático")
-        elif message == ('gostas de pigoitinhas?'):
-            page.send(sender_id, "eu sim, o marco só deles duros")
+            page.send(sender_id, "eu sou o RoBot, um robot simpático")
         elif message in perg_area:
-            page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
+            page.send(sender_id, "estamos na area da impermeabilização, fazemos isolamentos :)")
         elif message in perg_servc:
            page.send(sender_id, "questões mais especificas serão remetidas para os administradores da págida e respondidas com a maior brevidade possivel")
         elif message == "menu":
@@ -143,6 +147,7 @@ def message_handler(event): #Trabalha as msg
         else: #Mensagem default caso o bot nao saiba o que fazer
             msg = Handle.get_message('text')
             page.send(sender_id,msg,quick_replies=quickReply.default_menu,metadata="TEST")
+
 ##            for x in moderator: #manda para os donos a dizer que houve porcaria
 ##                page.send(x,"Ocorreu um problema hoje, não soube responder a algo que o {} perguntou-me. Sorry :(".format(nomeuser))
 @page.handle_postback #Quando recebe um postback
@@ -154,12 +159,15 @@ def received_postback(event):
     print("Postback de {} recebido. Payload de :{}".format(sender_id,payload)) #LOG
     if payload == "START_PAYLOAD": #Se o get started ter sido pressionado
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
+   
     elif payload == "MUSIC_PAYLOAD": #Se o butao de musica ser pressionado
-        page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
+        page.send(sender_id, "serviços de impermeabilização")        
+        #page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
     elif payload == "AJUDA_PAYLOAD": #Se for de ajuda
-        page.send(sender_id,"Pode-me dizer, a qualquer altura 'menu' e eu irei te mostrar o menu! :D")
+        page.send(sender_id,"Pode dizer, a qualquer altura 'menu' e eu irei te mostrar o menu! :D")
     elif payload == "PROD_PAYLOAD": #Se for de "Produtos recreativos"
-        page.send(sender_id,"Temos uma variada range de produtos.\nCarregue no menu ao seu lado esquerdo, para ir ao nosso website")
+        page.send(sender_id,"Temos uma variada range de serviços de impermeabilização.\nLigue 961498061 para obter mais respost")
+    
 
 @page.handle_delivery #Para verificar que a msg e enviada com sucesso
 def received_delivery_confirmation(event):

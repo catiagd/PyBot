@@ -22,9 +22,9 @@ def verify():
 
 @app.route('/', methods=['POST']) #Caso exista um POST no index do webhook chama a função e decorater seguintes
 def webhook():
-    page.greeting("Bem vindo, a nossa loja de produtos recreativos, por favor, pergunte-me algo!") #Info da pagina que o bot disponibiliza
+    page.greeting("Bem vindo, a página da impermonti, empresa de isolamentos, está a falar com respostas automaticas, por favor pergunte-me algo!") #Info da pagina que o bot disponibiliza
     page.show_starting_button("START_PAYLOAD") #Butão de começar que me deu uma dor de cabeça do clrh
-    page.show_persistent_menu([Template.ButtonWeb('Website', 'https://www.leafly.com/')]) #Mostra um menu todo pimposo ao lado
+    #page.show_persistent_menu([Template.ButtonWeb('Website', 'https://www.leafly.com/')]) #Mostra um menu todo pimposo ao lado
     payload = request.get_data(as_text=True) #Faz um request ao webhook e obtem a data
     print(payload) #Cria o log
     # Processa msg
