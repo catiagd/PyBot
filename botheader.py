@@ -5,7 +5,7 @@ from fbmq import template as Template
 from datetime import datetime
 from flask import Flask, request
 
-
+#dd
 token = "EAAXucKw0xEwBAGMKSa2ZBHy6kW2rCDJVz9ZBKioho7EiDOPNFJs3IvKcBrVWesDnYzZCfL4uytPnY2HYTTWdbPvPvIaT97RvTcuhRAJSZB2GJLV5RsZCfzLbeTkNSmWLgJhWyNNjgQkQxh0rciNhWo4Skv29CQjLZAZCeq5rysgyAZDZD"
 page = Page(token)
 QuestaoPaga=["quais sao as opcoes de pagamento?","como posso pagar?","pagar"]
