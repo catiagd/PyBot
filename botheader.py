@@ -6,7 +6,7 @@ from datetime import datetime
 from flask import Flask, request
 
 
-token = "EAACoZCnVve74BAAIZCs17iPNPK6pUatUdOKhY2EciLVhTEZAU2Bx1KD3EFYiUvYtFYxNXEOQXYj2VVcme8PmsLBuHQGQgDztJfcjcqVPZBfM8ZArrXgOxvSbgvrUZAIvz34ACTZBhUUfQ6qrlY7KHEN0lBZAng5Oylz58XGtGfmJAd2l9bE4sjS5"
+token = "EAAXucKw0xEwBAGMKSa2ZBHy6kW2rCDJVz9ZBKioho7EiDOPNFJs3IvKcBrVWesDnYzZCfL4uytPnY2HYTTWdbPvPvIaT97RvTcuhRAJSZB2GJLV5RsZCfzLbeTkNSmWLgJhWyNNjgQkQxh0rciNhWo4Skv29CQjLZAZCeq5rysgyAZDZD"
 page = Page(token)
 QuestaoPaga=["quais sao as opcoes de pagamento?","como posso pagar?","pagar"]
 QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?", "quanto é que os teus serviços custam?"]
@@ -16,7 +16,7 @@ nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
 perg_area = ["em que areas opera?", "o que fazem?", "qual a area da empresa?"]
 perg_servc=["posso saber mais sobre um serviço?", "que servicos tem em particular?","que servicos oferecem?"]
 smile=[":D",":P",":)",";)",":*"]
-moderator = [1838746479497346,2199242023423175] #ID Pedro e Cátia
+#moderator = [2199242023423175] #ID Pedro e Cátia
 
 class buttons:
     btnmenu = [
@@ -143,8 +143,8 @@ def message_handler(event): #Trabalha as msg
         else: #Mensagem default caso o bot nao saiba o que fazer
             msg = Handle.get_message('text')
             page.send(sender_id,msg,quick_replies=quickReply.default_menu,metadata="TEST")
-            for x in moderator: #manda para os donos a dizer que houve porcaria
-                page.send(x,"Ocorreu um problema hoje, não soube responder a algo que o {} perguntou-me. Sorry :(".format(nomeuser))
+##            for x in moderator: #manda para os donos a dizer que houve porcaria
+##                page.send(x,"Ocorreu um problema hoje, não soube responder a algo que o {} perguntou-me. Sorry :(".format(nomeuser))
 @page.handle_postback #Quando recebe um postback
 def received_postback(event):
     sender_id = event.sender_id
