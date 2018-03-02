@@ -20,7 +20,7 @@ smile=[":D",":P",":)",";)",":*"]
 
 class buttons:
     btnmenu = [
-        Template.ButtonPostBack("Musica", "MUSIC_PAYLOAD"),
+        Template.ButtonPostBack("Serviços", "MUSIC_PAYLOAD"),
         Template.ButtonPostBack('"Produtos recreativos"',"PROD_PAYLOAD"),
         Template.ButtonPostBack("Ajuda","AJUDA_PAYLOAD")
     ]
