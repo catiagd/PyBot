@@ -74,7 +74,7 @@ class Handle:
             return random.choice(smile)
         elif tipo  == 'text':
             exemplos = ["Peço imensa desculpa, não pense que sou um robot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
-        return (random.choice(exemplos)+' -signed bot')
+        return (random.choice(exemplos)+' -assinado: o robot')
 
 @page.handle_message
 def message_handler(event): #Trabalha as msg
