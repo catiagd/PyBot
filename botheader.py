@@ -171,4 +171,4 @@ def received_delivery_confirmation(event):
 
 @page.handle_read #Para verificar se o user le a msg
 def received_message_read(event):
-print("O user leu a mensagem")
+    print("O user leu a mensagem")
