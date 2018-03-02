@@ -52,12 +52,12 @@ class quickReply:
 #            return random.choice(playlist)
 
 class Handle:
-    def get_num(): #Obtem um numero random entre 1 e 2
-        numbergen=[1,2]
-        return random.choice(numbergen)
+#    def get_num(): #Obtem um numero random entre 1 e 2
+#        numbergen=[1,2]
+#        return random.choice(numbergen)
     def get_att(tipo): #Obtem uma imagem random para enviar
-        if tipo == 'image':
-            exemplos = ["https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543","https://vignette.wikia.nocookie.net/harrypotter/images/2/27/Happy-guy-thumbs-up-300x237.gif/revision/latest?cb=20121019041406"]
+ #       if tipo == 'image':
+ #           exemplos = ["https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543","https://vignette.wikia.nocookie.net/harrypotter/images/2/27/Happy-guy-thumbs-up-300x237.gif/revision/latest?cb=20121019041406"]
 
         if tipo == 'thumbs':
             exemplos =["http://static.twentytwowords.com/wp-content/uploads/Thumbs-and-Ammo-02.jpg","http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"]
@@ -93,12 +93,12 @@ def message_handler(event): #Trabalha as msg
                 image_url=Handle.get_att('thumbs')
                 page.send(sender_id,Attachment.Image(image_url))
             else: #Imagem normal
-                if Handle.get_num() == 1: #Envia txt
-                    msg=Handle.get_message('image')
-                    page.send(sender_id,msg)
-                else: #Envai imagem
-                    image_url=Handle.get_att('image')
-                    page.send(sender_id,Attachment.Image(image_url))
+#                if Handle.get_num() == 1: #Envia txt
+                 msg=Handle.get_message('image')
+                 page.send(sender_id,msg)
+#                else: #Envai imagem
+#                    image_url=Handle.get_att('image')
+#                    page.send(sender_id,Attachment.Image(image_url))
         elif 'video' in str(message.get("attachments")): #Se for video
             msg=Handle.get_message('video')
             page.send(sender_id,msg)
