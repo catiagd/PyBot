@@ -51,7 +51,7 @@ class quickReply:
             return random.choice(playlist)
 '''
 class Handle:
-'''
+
     def get_num(): #Obtem um numero random entre 1 e 2
         numbergen=[1,2]
         return random.choice(numbergen)
@@ -62,10 +62,10 @@ class Handle:
         if tipo == 'thumbs':
             exemplos =["http://static.twentytwowords.com/wp-content/uploads/Thumbs-and-Ammo-02.jpg","http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"]
         return random.choice(exemplos)
-'''
+
 
     def get_message(tipo): #Obtem uma msg random para enviar
-        '''
+'''
         if tipo == 'image':
             exemplos= ["Lindo/a","Que giro","Wow"]
         elif tipo == 'video':
@@ -74,7 +74,7 @@ class Handle:
             exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
         elif tipo == 'smile':
             return random.choice(smile)
-        '''        
+'''        
         if tipo  == 'text':
             exemplos = ["Peço imensa desculpa, não pense que sou um robot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
         return (random.choice(exemplos)+' -signed robot')
@@ -114,7 +114,7 @@ def message_handler(event): #Trabalha as msg
             '''
         else: #Fault tolerance
             page.send(sender_id,"Já o vou ver! :D")
-    '''
+'''
     elif message.get("quick_reply"): #Se for um quick_reply
         if "PICK_MENU" in str(message.get("quick_reply")): #Se tiver escolhido o menu
             page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
@@ -125,7 +125,7 @@ def message_handler(event): #Trabalha as msg
         else: #Se for de um genero musical
             video_url=quickReply.get_music((message.get("quick_reply")).get('payload'))
             page.send(sender_id,video_url)
-    '''
+'''
     elif message.get("text"): #Se for texto
         message = event.message_text #Guarda o texto
         print(message)
