@@ -9,7 +9,7 @@ from flask import Flask, request
 token = "EAAXucKw0xEwBAGMKSa2ZBHy6kW2rCDJVz9ZBKioho7EiDOPNFJs3IvKcBrVWesDnYzZCfL4uytPnY2HYTTWdbPvPvIaT97RvTcuhRAJSZB2GJLV5RsZCfzLbeTkNSmWLgJhWyNNjgQkQxh0rciNhWo4Skv29CQjLZAZCeq5rysgyAZDZD"
 page = Page(token)
 QuestaoPaga=["quais sao as opcoes de pagamento?","como posso pagar?","pagar"]
-QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?", "quanto é que os teus serviços custam?, orçamento"]
+QuestaoPreco=["quanto custam os produtos?","preco","quanto custa?","quanto e?", "quanto é que os teus serviços custam?"]
 saudacoes = ["bom dia","boa tarde","boa noite","ola","boas"]
 vidal = ["qual o segredo da vida?","qual o proposito de viver","existe um suprasumo da sapiencia"]
 nome = ["como te chamas?","quem es tu?","qual o teu nome?"]
@@ -20,44 +20,43 @@ smile=[":D",":P",":)",";)",":*"]
 
 class buttons:
     btnmenu = [
-        Template.ButtonPostBack("Serviços", "SERV_PAYLOAD"),
+        Template.ButtonPostBack("Serviços", "MUSIC_PAYLOAD"),
+        Template.ButtonPostBack('"Produtos recreativos"',"PROD_PAYLOAD"),
         Template.ButtonPostBack("Ajuda","AJUDA_PAYLOAD")
     ]
 
 class quickReply:
-    
-#        quick_musica = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
-#                        {'title': "Rn'B", 'payload': 'PICK_RnB'},
-#                        {'title': 'Pop', 'payload': 'PICK_POP'},
-#                        {'title': 'Indie', 'payload': 'PICK_INDIE'},
-#                        {'title': 'Classic', 'payload': 'PICK_CLASSIC'},
-#                        {'title': 'Metal', 'payload': 'PICK_METAL'}]
-        
+        quick_musica = [{'title': 'Rock', 'payload': 'PICK_ROCK'},
+                        {'title': "Rn'B", 'payload': 'PICK_RnB'},
+                        {'title': 'Pop', 'payload': 'PICK_POP'},
+                        {'title': 'Indie', 'payload': 'PICK_INDIE'},
+                        {'title': 'Classic', 'payload': 'PICK_CLASSIC'},
+                        {'title': 'Metal', 'payload': 'PICK_METAL'}]
         default_menu = [{'title': 'Menu','payload': 'PICK_MENU'},
-                        {'title': 'Preços','payload': 'PICK_PRECO'}]
-
-#        def get_music(genre):
-#            if genre == "PICK_ROCK":
-#                playlist = ["https://www.youtube.com/watch?v=YR5ApYxkU-U&list=RDYR5ApYxkU-U&t=1","https://www.youtube.com/watch?v=fJ9rUzIMcZQ&list=RDEMbHaAxpOZhcVmmF6I3y0siA","https://www.youtube.com/watch?v=s88r_q7oufE&list=RDEMu-D7kEFynn1tn5qmluVnhw","https://www.youtube.com/watch?v=v2AC41dglnM&list=RDEMDs8vWIQKMflBG8QUQQaUrw"]
-#            elif genre == "PICK_INDIE":
-#                playlist = ["https://www.youtube.com/watch?v=VEpMj-tqixs&list=RDQMLJaf3zcef1I","https://www.youtube.com/watch?v=A-Tod1_tZdU&list=RDEMhK9GwO7FT3oWyTWGsPuSrg","https://www.youtube.com/watch?v=_DjE4gbIVZk&list=RD_DjE4gbIVZk&t=2","https://www.youtube.com/watch?v=bpOSxM0rNPM&list=RDEMThYJ2VcXXNp3GM7AwT24UQ","https://www.youtube.com/watch?v=_lMlsPQJs6U&list=RD_lMlsPQJs6U&t=2"]
-#            elif genre == "PICK_POP":
-#                playlist = ["https://www.youtube.com/watch?v=Zi_XLOBDo_Y&list=RDEMe12_MlgO8mGFdeeftZ2nOQ","https://www.youtube.com/watch?v=EDwb9jOVRtU&list=RDEMaN9C20MoM3K8E1iVi3CAmg","https://www.youtube.com/watch?v=v0KpfrJE4zw&list=RDEM_0ItSElzQ0VS4lssmoXyeg"]
-#            elif genre == "PICK_RnB":
-#                playlist = ["https://www.youtube.com/watch?v=rywUS-ohqeE&list=RDEMWzjnvwhEBiIfo26pzdGUgw","https://www.youtube.com/watch?v=0CFuCYNx-1g&list=RD0CFuCYNx-1g"]
-#            elif genre == "PICK_METAL":
-#                playlist = ["https://www.youtube.com/watch?v=CD-E-LDc384&list=RDEMAkKpoB62G5Wmtp0nQxfrDg","https://www.youtube.com/watch?v=F_6IjeprfEs&list=RDF_6IjeprfEs&t=1","https://www.youtube.com/watch?v=KF96MQbDkMQ&list=RDKF96MQbDkMQ","https://www.youtube.com/watch?v=Ff54AQaDGbs&list=RDFf54AQaDGbs&t=1","https://www.youtube.com/watch?v=CSvFpBOe8eY&list=RDEMRoCx7NEN4B1lXoHSAiz26w"]
-#            elif genre == "PICK_CLASSIC":
-#                playlist = ["https://www.youtube.com/watch?v=O6NRLYUThrY","https://www.youtube.com/watch?v=W-fFHeTX70Q","https://www.youtube.com/watch?v=6JQm5aSjX6g",""]
-#            return random.choice(playlist)
+                        {'title': 'Preços','payload': 'PICK_PRECO'},
+                        {'title': 'Música do dia','payload':'PICK_MUS'}]
+        def get_music(genre):
+            if genre == "PICK_ROCK":
+                playlist = ["https://www.youtube.com/watch?v=YR5ApYxkU-U&list=RDYR5ApYxkU-U&t=1","https://www.youtube.com/watch?v=fJ9rUzIMcZQ&list=RDEMbHaAxpOZhcVmmF6I3y0siA","https://www.youtube.com/watch?v=s88r_q7oufE&list=RDEMu-D7kEFynn1tn5qmluVnhw","https://www.youtube.com/watch?v=v2AC41dglnM&list=RDEMDs8vWIQKMflBG8QUQQaUrw"]
+            elif genre == "PICK_INDIE":
+                playlist = ["https://www.youtube.com/watch?v=VEpMj-tqixs&list=RDQMLJaf3zcef1I","https://www.youtube.com/watch?v=A-Tod1_tZdU&list=RDEMhK9GwO7FT3oWyTWGsPuSrg","https://www.youtube.com/watch?v=_DjE4gbIVZk&list=RD_DjE4gbIVZk&t=2","https://www.youtube.com/watch?v=bpOSxM0rNPM&list=RDEMThYJ2VcXXNp3GM7AwT24UQ","https://www.youtube.com/watch?v=_lMlsPQJs6U&list=RD_lMlsPQJs6U&t=2"]
+            elif genre == "PICK_POP":
+                playlist = ["https://www.youtube.com/watch?v=Zi_XLOBDo_Y&list=RDEMe12_MlgO8mGFdeeftZ2nOQ","https://www.youtube.com/watch?v=EDwb9jOVRtU&list=RDEMaN9C20MoM3K8E1iVi3CAmg","https://www.youtube.com/watch?v=v0KpfrJE4zw&list=RDEM_0ItSElzQ0VS4lssmoXyeg"]
+            elif genre == "PICK_RnB":
+                playlist = ["https://www.youtube.com/watch?v=rywUS-ohqeE&list=RDEMWzjnvwhEBiIfo26pzdGUgw","https://www.youtube.com/watch?v=0CFuCYNx-1g&list=RD0CFuCYNx-1g"]
+            elif genre == "PICK_METAL":
+                playlist = ["https://www.youtube.com/watch?v=CD-E-LDc384&list=RDEMAkKpoB62G5Wmtp0nQxfrDg","https://www.youtube.com/watch?v=F_6IjeprfEs&list=RDF_6IjeprfEs&t=1","https://www.youtube.com/watch?v=KF96MQbDkMQ&list=RDKF96MQbDkMQ","https://www.youtube.com/watch?v=Ff54AQaDGbs&list=RDFf54AQaDGbs&t=1","https://www.youtube.com/watch?v=CSvFpBOe8eY&list=RDEMRoCx7NEN4B1lXoHSAiz26w"]
+            elif genre == "PICK_CLASSIC":
+                playlist = ["https://www.youtube.com/watch?v=O6NRLYUThrY","https://www.youtube.com/watch?v=W-fFHeTX70Q","https://www.youtube.com/watch?v=6JQm5aSjX6g",""]
+            return random.choice(playlist)
 
 class Handle:
-#    def get_num(): #Obtem um numero random entre 1 e 2
-#        numbergen=[1,2]
-#        return random.choice(numbergen)
+    def get_num(): #Obtem um numero random entre 1 e 2
+        numbergen=[1,2]
+        return random.choice(numbergen)
     def get_att(tipo): #Obtem uma imagem random para enviar
- #       if tipo == 'image':
- #           exemplos = ["https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543","https://vignette.wikia.nocookie.net/harrypotter/images/2/27/Happy-guy-thumbs-up-300x237.gif/revision/latest?cb=20121019041406"]
+        if tipo == 'image':
+            exemplos = ["https://cdn.shopify.com/s/files/1/0862/4240/products/1_0d691e32-3771-402a-aaee-dc004ea1b2c3.jpeg?v=1441091543","https://vignette.wikia.nocookie.net/harrypotter/images/2/27/Happy-guy-thumbs-up-300x237.gif/revision/latest?cb=20121019041406"]
 
         if tipo == 'thumbs':
             exemplos =["http://static.twentytwowords.com/wp-content/uploads/Thumbs-and-Ammo-02.jpg","http://4.bp.blogspot.com/-EGzuN7Jcj0I/UUnR1Y0xWQI/AAAAAAAAA2Q/XMK6_yMNYPo/s1600/ChuckNorristhumbsup+Emil+P.jpg"]
@@ -65,16 +64,16 @@ class Handle:
 
     def get_message(tipo): #Obtem uma msg random para enviar
         if tipo == 'image':
-            exemplos= ["Que giro","Wow"]
+            exemplos= ["Lindo/a","Que giro","Wow"]
         elif tipo == 'video':
             exemplos=["ja vejo esse video", "video giro", "spectalucaaah"]
         elif tipo == 'audio':
-            exemplos=["os meus donos ja ouvirão", "say whaaaaa!"]
+            exemplos=["já oiço", "voz sexy", "say whaaaaa!"]
         elif tipo == 'smile':
             return random.choice(smile)
         elif tipo  == 'text':
-            exemplos = ["Peço imensa desculpa, não pense que sou um robot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
-        return (random.choice(exemplos)+' -assinado: o robot')
+            exemplos = ["Peço imensa desculpa, não pense que sou um bot burro.....DITO ISTO.... Não faço ideia do que disse... sorry, mas os nossos donos serão avisados :D","Não sei essa palavra :c Desculpa! Mas os nossos donos foram avisados!","Bolas, peço imensa desculpa mas não o consigo ajudar, os meus donos serão avisados "]
+        return (random.choice(exemplos)+' -signed bot')
 
 @page.handle_message
 def message_handler(event): #Trabalha as msg
@@ -93,12 +92,12 @@ def message_handler(event): #Trabalha as msg
                 image_url=Handle.get_att('thumbs')
                 page.send(sender_id,Attachment.Image(image_url))
             else: #Imagem normal
-#                if Handle.get_num() == 1: #Envia txt
-                 msg=Handle.get_message('image')
-                 page.send(sender_id,msg)
-#                else: #Envai imagem
-#                    image_url=Handle.get_att('image')
-#                    page.send(sender_id,Attachment.Image(image_url))
+                if Handle.get_num() == 1: #Envia txt
+                    msg=Handle.get_message('image')
+                    page.send(sender_id,msg)
+                else: #Envai imagem
+                    image_url=Handle.get_att('image')
+                    page.send(sender_id,Attachment.Image(image_url))
         elif 'video' in str(message.get("attachments")): #Se for video
             msg=Handle.get_message('video')
             page.send(sender_id,msg)
@@ -112,12 +111,10 @@ def message_handler(event): #Trabalha as msg
     elif message.get("quick_reply"): #Se for um quick_reply
         if "PICK_MENU" in str(message.get("quick_reply")): #Se tiver escolhido o menu
             page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
-        #elif "PICK_MUS" in str(message.get("quick_reply")): #Se tiver escolhido o menu de musica
-            #page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
+        elif "PICK_MUS" in str(message.get("quick_reply")): #Se tiver escolhido o menu de musica
+            page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
         elif "PICK_PRECO" in str(message.get("quick_reply")): #Se tiver escolhido o Preço
-            page.send(sender_id,"Poderá pedir um orçamento à sua medida ligando 966004742. Obrigado.")
-            for x in moderator: #manda para os donos a dizer que houve porcaria
-                page.send(x,"O user {} perguntou por preço. :)".format(nomeuser))
+            page.send(sender_id,"Deste momento não disponibilizamos preços. Obrigado.")
         else: #Se for de um genero musical
             video_url=quickReply.get_music((message.get("quick_reply")).get('payload'))
             page.send(sender_id,video_url)
@@ -128,13 +125,17 @@ def message_handler(event): #Trabalha as msg
         if message.upper() in smile:
             page.send(sender_id,Handle.get_message('smile'))
         elif message in QuestaoPreco:
-            page.send(sender_id,"Escreva a palavra -orçamento- ou peça o seu orçamento liagando para o numero 966004742")
+            page.send(sender_id,"o range é de 10 a 100 euros")
         elif message in saudacoes:
             page.send(sender_id,"Saudações")
+        elif message in vidal:
+            page.send(sender_id, "a resposta é sempre DARIO\n https://www.youtube.com/watch?v=vTIIMJ9tUc8")
         elif message in nome:
             page.send(sender_id, "eu sou o Bot, um robot simpático")
+        elif message == ('gostas de pigoitinhas?'):
+            page.send(sender_id, "eu sim, o marco só deles duros")
         elif message in perg_area:
-            page.send(sender_id, "estamos na area da impermeabilização")
+            page.send(sender_id, "estamos na area da diversão, vendemos produtos recriativos :)")
         elif message in perg_servc:
            page.send(sender_id, "questões mais especificas serão remetidas para os administradores da págida e respondidas com a maior brevidade possivel")
         elif message == "menu":
@@ -153,11 +154,12 @@ def received_postback(event):
     print("Postback de {} recebido. Payload de :{}".format(sender_id,payload)) #LOG
     if payload == "START_PAYLOAD": #Se o get started ter sido pressionado
         page.send(sender_id,Template.Buttons("Nosso menu",buttons.btnmenu))
-    elif payload == "SERV_PAYLOAD": #Se o butao de musica ser pressionado
-        page.send(sender_id,"temos os mais diversos serviços de impermeabilização, peça um orçamento à sua medida ligando para 966004742")
+    elif payload == "MUSIC_PAYLOAD": #Se o butao de musica ser pressionado
+        page.send(sender_id,"Qual é o seu genero de música favorito?",quick_replies=quickReply.quick_musica,metadata="TEST")
     elif payload == "AJUDA_PAYLOAD": #Se for de ajuda
         page.send(sender_id,"Pode-me dizer, a qualquer altura 'menu' e eu irei te mostrar o menu! :D")
-
+    elif payload == "PROD_PAYLOAD": #Se for de "Produtos recreativos"
+        page.send(sender_id,"Temos uma variada range de produtos.\nCarregue no menu ao seu lado esquerdo, para ir ao nosso website")
 
 @page.handle_delivery #Para verificar que a msg e enviada com sucesso
 def received_delivery_confirmation(event):
@@ -169,4 +171,4 @@ def received_delivery_confirmation(event):
 
 @page.handle_read #Para verificar se o user le a msg
 def received_message_read(event):
-    print("O user leu a mensagem")
+print("O user leu a mensagem")
